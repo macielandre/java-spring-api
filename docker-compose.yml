@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+    database:
+        image: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: dev
+            MYSQL_DATABASE: platform
+            MYSQL_USER: andre.maciel
+            MYSQL_PASSWORD: eumesmo
+        volumes:
+            - "db-volume:/var/lib/mysql"
+volumes:
+    db-volume:

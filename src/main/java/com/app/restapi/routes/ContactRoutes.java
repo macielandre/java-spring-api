@@ -21,7 +21,7 @@ public class ContactRoutes {
     @Autowired
     private ContactRepository repository;
 
-    @GetMapping("/{id}")
+    @GetMapping
     public List<Contact> listAll() {
         return repository.findAll();
     }
