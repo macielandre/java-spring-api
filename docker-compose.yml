@@ -1,6 +1,16 @@
 version: '3.5'
 services:
-    database:
+    rabbitmq:
+        image: rabbitmq:management
+        container_name: rabbitmq
+        environment:
+            - RABBITMQ_DEFAULT_USER=admin
+            - RABBITMQ_DEFAULT_PASS=passw123
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+    mysql:
         image: mysql
         ports:
             - "3306:3306"
@@ -13,3 +23,7 @@ services:
             - "db-volume:/var/lib/mysql"
 volumes:
     db-volume:
+
+networks:
+    default:
+        driver: bridge
