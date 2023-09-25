@@ -13,7 +13,11 @@ public class RabbitmqService {
         try {
             ConnectionFactory factory = new ConnectionFactory();
 
-            factory.setHost("amqp://admin:passw123@host:5672/");
+            factory.setHost("localhost");
+            factory.setPort(5672);
+            factory.setPassword("passw123");
+            factory.setUsername("admin");
+            factory.setVirtualHost("default");
 
             connection = factory.newConnection();
             channel = connection.createChannel();
@@ -26,7 +30,7 @@ public class RabbitmqService {
 
     public static void sendMessage(String queueName, String message) {
         try {
-            channel.basicPublish(message, queueName, null, message.getBytes());
+            channel.basicPublish("", queueName, null, message.getBytes());
         } catch (Exception err) {
             err.printStackTrace();
         }
