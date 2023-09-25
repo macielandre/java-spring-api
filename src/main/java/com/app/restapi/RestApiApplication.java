@@ -3,7 +3,7 @@ package com.app.restapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.app.restapi.services.RabbitmqService;
+import com.app.restapi.services.rabbitmq.RabbitmqService;
 
 @SpringBootApplication
 public class RestApiApplication {

@@ -1,4 +1,4 @@
-package com.app.restapi.services;
+package com.app.restapi.services.rabbitmq;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
@@ -13,7 +13,7 @@ public class RabbitmqService {
         try {
             ConnectionFactory factory = new ConnectionFactory();
 
-            factory.setHost("amqp://admin:passw123@host:5672/virtual_host");
+            factory.setHost("amqp://admin:passw123@host:5672/");
 
             connection = factory.newConnection();
             channel = connection.createChannel();
