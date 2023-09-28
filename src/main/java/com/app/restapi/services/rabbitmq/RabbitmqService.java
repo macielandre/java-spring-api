@@ -17,7 +17,7 @@ public class RabbitmqService {
             factory.setPort(5672);
             factory.setPassword("passw123");
             factory.setUsername("admin");
-            factory.setVirtualHost("default");
+            factory.setVirtualHost("/");
 
             connection = factory.newConnection();
             channel = connection.createChannel();
@@ -25,6 +25,7 @@ public class RabbitmqService {
             channel.queueDeclare(queueName, false, false, false, null);
         } catch (Exception err) {
             err.printStackTrace();
+            System.exit(1);
         }
     }
 

@@ -1,23 +1,26 @@
 package com.app.restapi.services.event;
 
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.app.restapi.entities.Event;
 import com.app.restapi.services.rabbitmq.RabbitmqService;
 
 @Repository
 public class EventServiceImp implements EventService {
-    private JpaRepository<Event, Integer> repository;
+    @Autowired
+    private EventRepository repository;
 
     public void sendEvent(Event event) {
-        String stringfiedEvent = event.getName() + "-" + event.getUserId();
+        String stringEvent = event.getName() + "-" + event.getUserId();
+        String queueName = "events";
 
-        RabbitmqService.sendMessage("event", stringfiedEvent);
+        RabbitmqService.sendMessage(queueName, stringEvent);
         repository.save(event);
     }
 
     public List<Event> getEventsByUserId(String userId) {
-        return repository.findAll();
+        return repository.findAllByUserId(userId);
     }
 }

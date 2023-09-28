@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.app.restapi.entities.Event;
 
 @Repository
-public interface EventService {
-    void sendEvent(Event event);
-
-    List<Event> getEventsByUserId(String userId);
+public interface EventRepository extends JpaRepository<Event, Integer> {
+    List<Event> findAllByUserId(String userId);
 }
