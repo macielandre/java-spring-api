@@ -18,6 +18,12 @@ public class Event {
     @Column(nullable = false)
     private String userId;
 
+    public Event(String name, String description, String userId) {
+        this.name = name;
+        this.description = description;
+        this.userId = userId;
+    }
+
     public Integer getId() {
         return id;
     }

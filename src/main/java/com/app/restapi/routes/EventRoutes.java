@@ -3,6 +3,8 @@ package com.app.restapi.routes;
 import java.util.List;
 import com.app.restapi.entities.Event;
 import com.app.restapi.services.event.EventService;
+import com.app.restapi.validations.EventRequest;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,9 @@ public class EventRoutes {
     }
 
     @PostMapping
-    public void create(@RequestBody Event event) {
+    public void create(@RequestBody EventRequest request) {
+        Event event = new Event(request.getName(), request.getDescription(), request.getUserId());
+
         eventService.sendEvent(event);
     }
 }
