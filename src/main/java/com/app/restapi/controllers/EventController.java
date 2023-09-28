@@ -1,4 +1,4 @@
-package com.app.restapi.routes;
+package com.app.restapi.controllers;
 
 import java.util.List;
 import com.app.restapi.entities.Event;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/event")
-public class EventRoutes {
+public class EventController {
     @Autowired
     private EventService eventService;
 
